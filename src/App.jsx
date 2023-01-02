@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Header from './components/Header'
 import ListadoGastos from './components/ListadoGastos'
 import Filtro from "./components/Filtro";
@@ -11,6 +11,7 @@ function App() {
   const [presupuesto, setPresupuesto] = useState(INITIAL_PRESUPUESTO)
   const [isValidPresupuesto, setisValidPresupuesto] = useState(false)
 
+  const docRef = useRef(null); // para hacer referencia al objeto "document"
   const [modal, setModal] = useState(false)
   const [animarModal, setAnimarModal] = useState(false)
 
@@ -21,9 +22,11 @@ function App() {
   const [filtro, setFiltro] = useState('')
   const [arrGastosFiltrados, setArrGastosFiltrados] = useState([])
 
-  // Al parecer esto no es efectivo ya que estamos accediendo al DOM directamente y (creo) que React trabaja con un DOM Virtual
+  // para ocultar el modal con la tecla "Escape"
   useEffect(() => {
-    document.addEventListener('keyup', (e) => {
+    docRef.current = document; // aqui se le asigna el objeto document nativo de JS
+
+    docRef.current.addEventListener('keyup', (e) => {
       if (modal && e.key === 'Escape') {
         setAnimarModal(false)
 
