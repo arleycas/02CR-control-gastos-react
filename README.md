@@ -1,3 +1,6 @@
+Segundo aplicativo de React - La Guía Completa: Hooks Context Redux MERN +15 Apps
+PROYECTO: Control de presupuesto en React con Vite y LocalStorage
+
 - Sin uso de frameworks CSS
 - Uso de CDN externos, como GoogleFonts o Normalize.css (tan facil como agregarlos en el index.html)
 - Uso de LocalStorage
